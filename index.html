@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>timeR</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>timeR</h1>
+  <section id="add-entry">
+    <h2>New Entry</h2>
+    <form id="entry-form">
+      <label>Date: <input type="date" id="date" required /></label>
+      <label>Start: <input type="time" id="start" required /></label>
+      <label>Finish: <input type="time" id="finish" required /></label>
+      <label><input type="checkbox" id="lunch" /> Had lunch</label>
+      <label>Description:<br /><textarea id="description"></textarea></label>
+      <button type="submit">Add</button>
+    </form>
+  </section>
+
+  <section id="search">
+    <h2>Search</h2>
+    <label>From: <input type="date" id="from-date" /></label>
+    <label>To: <input type="date" id="to-date" /></label>
+    <button id="search-btn">Search</button>
+    <button data-range="last-week">Last Week</button>
+    <button data-range="last-month">Last Month</button>
+    <div id="results">
+      <p>Total hours: <span id="total-hours">0</span></p>
+      <table id="entries-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Start</th>
+            <th>Finish</th>
+            <th>Lunch</th>
+            <th>Hours</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>
